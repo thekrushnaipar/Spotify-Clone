@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24">
+  <!-- Outer green circle -->
+  <circle cx="256" cy="256" r="256" fill="#1fdf64"/>
+
+  <!-- Inner black play button -->
+  <path fill="black" d="M336.604 270.539c14.474-9.344 14.427-19.757 0-28.032l-116.049-80.798c-11.786-7.407-24.1-3.052-23.771 12.337l.47 162.57c1.009 16.693 10.541 21.271 24.592 13.547l114.758-79.624z"/>
+</svg>
