@@ -10,11 +10,12 @@ function secondsToMinutesSeconds(seconds) {
     return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
+
 async function getSongs(folder) {
     currFolder = folder;
 
-    // Fetch songs from songs.json
-    let res = await fetch(`https://thekrushnaipar.github.io/Spotify-Clone/songs/${folder}/songs.json`);
+    // Fetch songs from song.json (not songs.json)
+    let res = await fetch(`https://thekrushnaipar.github.io/Spotify-Clone/songs/${folder}/song.json`);
     let data = await res.json();
     songs = data.songs;
 
@@ -44,6 +45,7 @@ async function getSongs(folder) {
 
     return songs;
 }
+
 
 
 const playMusic = (track, pause = false) => {
