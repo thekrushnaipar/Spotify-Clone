@@ -12,22 +12,17 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`https://thekrushnaipar.github.io/Spotify-Clone/songs/${folder}/`);
-    let response = await a.text();
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a");
-    songs = [];
 
-    for (let element of as) {
-        if (element.href.endsWith(".mp3")) {
-            songs.push(decodeURIComponent(element.href.split(`/${folder}/`)[1]));
-        }
-    }
+    // Fetch songs from songs.json
+    let res = await fetch(`https://thekrushnaipar.github.io/Spotify-Clone/songs/${folder}/songs.json`);
+    let data = await res.json();
+    songs = data.songs;
 
     // Show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
     songUL.innerHTML = "";
+
+    // Loop through songs and add them to the playlist UI
     for (const song of songs) {
         songUL.innerHTML += `<li><img class="invert" width="34" src="img/music.svg" alt="">
             <div class="info">
@@ -41,7 +36,7 @@ async function getSongs(folder) {
     }
 
     // Attach event listeners
-    Array.from(songUL.getElementsyTagName("li")).forEach(e => {
+    Array.from(songUL.getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", () => {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
         });
@@ -49,6 +44,7 @@ async function getSongs(folder) {
 
     return songs;
 }
+
 
 const playMusic = (track, pause = false) => {
     currentSong.src = `https://thekrushnaipar.github.io/Spotify-Clone/songs/${currFolder}/${track}`;
