@@ -108,7 +108,7 @@ async function main() {
             play.src = "img/pause.svg";
         } else {
             currentSong.pause();
-            play.src = "img/play.svg";
+            play.src = "img/roundplay.svg";
         }
     });
 
